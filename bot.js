@@ -28,6 +28,7 @@ const jokes = [
 
 client.on('messageCreate', (msg) => {
     if (msg.content === '!dadjoke') {
+        msg.delete();
         msg.channel.send({
             content: "Dad Joke of the Day | Sent via " + msg.author.username + "\n" + jokes[Math.floor(Math.random() * jokes.length)],
             files: [
