@@ -40,12 +40,13 @@ client.on('messageCreate', (msg) => {
     String(fullMessage);
     console.log(fullMessage);
 
-    // if (msg.content === fullMessage) {
-    //     msg.delete();
-    //     msg.channel.send({
-    //         content: "Command: " + fullMessage | "Sent via " + msg.author.username
-    //     });
-    // }
+    if (msg.content === fullMessage) {
+        msg.delete();
+        msg.channel.send({
+            //content: "Command: " + fullMessage | "Sent via " + msg.author.username
+            content: "Command: " + fullMessage
+        });
+    }
 
 
 });
