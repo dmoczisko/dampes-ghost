@@ -39,7 +39,6 @@ client.on('messageCreate', (msg) => {
 });
 
 client.on('messageCreate', (msg) => {
-    msg.delete();
     if (msg.content === '!stringtest') {
         msg.channel.send({
             content: "String | Sent via " + msg.author.username
