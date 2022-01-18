@@ -40,6 +40,7 @@ client.on('messageCreate', (msg) => {
 
 client.on('messageCreate', (msg) => {
     //Store the user message as a variable
+    const prefix = "!";
     const userMessage = msg.content;
 
     if (!msg.content.startsWith(prefix) || msg.author.bot) return;
