@@ -42,13 +42,18 @@ client.on('messageCreate', (msg) => {
     //Store the user message as a variable
     const userMessage = msg.content;
 
-    console.log('!' + userMessage);
+    if (!msg.content.startsWith(prefix) || msg.author.bot) return;
+
+    const args = msg.content.slice(prefix.length).trim().split(/ +/);
+    const command = args.shift().toLowerCase();
+
+    console.log(command);
 
     //check if ! is appended to the message and if so, log and send content
-    if (msg.content === '!' + userMessage) {
-        console.log(userMessage)
-        msg.channel.send({
-            content: "The Dynamic message sent is: " + userMessage | "Sent via " + msg.author.username
-        });
-    }
+    // if (msg.content === '!' + userMessage) {
+    //     console.log(userMessage)
+    //     msg.channel.send({
+    //         content: "The Dynamic message sent is: " + userMessage | "Sent via " + msg.author.username
+    //     });
+    // }
 });
