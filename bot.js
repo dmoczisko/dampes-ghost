@@ -42,10 +42,7 @@ client.on('messageCreate', (msg) => {
     msg.delete();
     if (msg.content === '!stringtest') {
         msg.channel.send({
-            content: "Dad Joke of the Day | Sent via " + msg.author.username + "\n" + jokes[Math.floor(Math.random() * jokes.length)],
-            files: [
-                "./graves/dadjoke.gif"
-            ]
+            content: "String | Sent via " + msg.author.username
         });
     }
 });
