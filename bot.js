@@ -39,9 +39,12 @@ client.on('messageCreate', (msg) => {
 });
 
 client.on('messageCreate', (msg) => {
-    if (msg.content === '!stringtest') {
+    let userMessage = msg.content;
+    console.log(userMessage);
+
+    if (msg.content === '!' + userMessage) {
         msg.channel.send({
-            content: "String | Sent via " + msg.author.username
+            content: "The Dynamic message sent is: " + userMessage | "Sent via " + msg.author.username
         });
     }
 });
