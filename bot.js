@@ -54,8 +54,10 @@ client.on('messageCreate', (msg) => {
 
 
     //check if ! is appended to the message and if so, log and send command text through
-    if(msg.content.startsWith(prefix + 'ping')) {
-        msg.channel.send('Pong!');
+    if(msg.content.startsWith(prefix + command)) {
+        msg.channel.send({
+            content: "Command" + command | "Sent via " + msg.author.username
+        });
     }
 
 });
