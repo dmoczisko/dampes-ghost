@@ -39,23 +39,25 @@ client.on('messageCreate', (msg) => {
 });
 
 client.on('messageCreate', (msg) => {
-    //Store the user message as a variable
+    //prefix variable is "!"
     const prefix = "!";
-    const userMessage = msg.content;
 
+    //if message doesn't start with prefix or is from bot, return
     if (!msg.content.startsWith(prefix) || msg.author.bot) return;
 
+    //variables to slice the message and shift to lowercase
     const args = msg.content.slice(prefix.length).trim().split(/ !/);
     const command = args.shift().toLowerCase();
 
-    console.log(args)
+    //log the command
     console.log(command);
 
-    //check if ! is appended to the message and if so, log and send content
-    // if (msg.content === '!' + userMessage) {
-    //     console.log(userMessage)
-    //     msg.channel.send({
-    //         content: "The Dynamic message sent is: " + userMessage | "Sent via " + msg.author.username
-    //     });
-    // }
+    //check if ! is appended to the message and if so, log and send command text through
+
+    if (msg.content.startsWith(prefix)) {
+        msg.channel.send({
+            content: "The Dynamic message sent is: " + command | "Sent via " + msg.author.username
+        });        
+    }
+
 });
