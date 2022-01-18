@@ -52,12 +52,14 @@ client.on('messageCreate', (msg) => {
     //log the command
     console.log(command);
 
+    console.log(prefix + command)
+
 
     //check if ! is appended to the message and if so, log and send command text through
-    if(msg.content.startsWith(prefix + command)) {
-        msg.channel.send({
-            content: "Command" + command | "Sent via " + msg.author.username
-        });
-    }
+    // if(msg.content.startsWith(prefix + command)) {
+    //     msg.channel.send({
+    //         content: "Command" + command | "Sent via " + msg.author.username
+    //     });
+    // }
 
 });
