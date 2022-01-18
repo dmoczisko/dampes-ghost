@@ -40,7 +40,7 @@ client.on('messageCreate', (msg) => {
 
 client.on('messageCreate', (msg) => {
     //prefix variable is "!"
-    const prefix = "!";
+    const prefix = '!';
 
     //if message doesn't start with prefix or is from bot, return
     if (!msg.content.startsWith(prefix) || msg.author.bot) return;
@@ -52,12 +52,10 @@ client.on('messageCreate', (msg) => {
     //log the command
     console.log(command);
 
-    //check if ! is appended to the message and if so, log and send command text through
 
-    if (msg.content.startsWith(`${prefix}`)) {
-        msg.channel.send({
-            content: "The Dynamic message sent is: " + command | "Sent via " + msg.author.username
-        });        
+    //check if ! is appended to the message and if so, log and send command text through
+    if(msg.content.startsWith(prefix + 'ping')) {
+        msg.channel.send('Pong!');
     }
 
 });
