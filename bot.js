@@ -22,28 +22,30 @@ client.on('messageCreate', (msg) => {
 });
 
 
-//below is testing code for prefix - in flight for modularity to commands
-// client.on('messageCreate', (msg) => {
-//     //prefix variable is "!"
-//     const prefix = '!';
-
-//     //if message doesn't start with prefix or is from bot, return
-//     if (!msg.content.startsWith(prefix) || msg.author.bot) return;
-
-//     //variables to slice the message and shift to lowercase
-//     const args = msg.content.slice(prefix.length).trim().split(/ !/);
-//     const command = args.shift().toLowerCase();
 
 
-//     const fullMessage = prefix + command;
-//     console.log(fullMessage);
+client.on('messageCreate', (msg) => {
+    //prefix variable is "!"
+    const prefix = '!';
 
-//     if (msg.content === fullMessage) {
-//         msg.delete();
-//         msg.channel.send({
-//             content: "Command: " + fullMessage | "Sent via " + msg.author.username
-//         });
-//     }
+    //if message doesn't start with prefix or is from bot, return
+    if (!msg.content.startsWith(prefix) || msg.author.bot) return;
+
+    //variables to slice the message and shift to lowercase
+    const args = msg.content.slice(prefix.length).trim().split(/ !/);
+    const command = args.shift().toLowerCase();
 
 
-// });
+    const fullMessage = prefix + command;
+    String(fullMessage);
+    console.log(fullMessage);
+
+    // if (msg.content === fullMessage) {
+    //     msg.delete();
+    //     msg.channel.send({
+    //         content: "Command: " + fullMessage | "Sent via " + msg.author.username
+    //     });
+    // }
+
+
+});
