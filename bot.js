@@ -37,8 +37,9 @@ client.on('messageCreate', (msg) => {
 
 
     const fullMessage = prefix + command;
-    String(fullMessage);
-    console.log(fullMessage);
+    String(command);
+    console.log("Full Message" + fullMessage);
+    console.log("Command: " + command);
 
     if (msg.content === fullMessage) {
         msg.delete();
