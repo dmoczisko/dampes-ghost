@@ -49,11 +49,16 @@ client.on('messageCreate', (msg) => {
     const args = msg.content.slice(prefix.length).trim().split(/ !/);
     const command = args.shift().toLowerCase();
 
-    //log the command
-    console.log(command);
 
-    console.log(prefix + command)
+    const fullMessage = prefix + command;
+    console.log(fullMessage);
 
+    if (msg.content === fullMessage) {
+        msg.delete();
+        msg.channel.send({
+            content: "Command: " + fullMessage | "Sent via " + msg.author.username
+        });
+    }
 
     //check if ! is appended to the message and if so, log and send command text through
     // if(msg.content.startsWith(prefix + command)) {
