@@ -46,8 +46,5 @@ client.on('messageCreate', (msg) => {
                 "./graves/" + command + ".gif"
             ]
         });
-
     }
-
-
 });
