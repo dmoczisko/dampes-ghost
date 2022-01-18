@@ -47,6 +47,7 @@ client.on('messageCreate', (msg) => {
     const args = msg.content.slice(prefix.length).trim().split(/ +/);
     const command = args.shift().toLowerCase();
 
+    console.log(args)
     console.log(command);
 
     //check if ! is appended to the message and if so, log and send content
