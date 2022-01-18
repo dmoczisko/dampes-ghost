@@ -54,7 +54,9 @@ client.on('messageCreate', (msg) => {
 
     //check if ! is appended to the message and if so, log and send command text through
 
-    if (msg.content.startsWith(prefix)) {
+
+
+    if (msg.content.startsWith(${prefix})) {
         msg.channel.send({
             content: "The Dynamic message sent is: " + command | "Sent via " + msg.author.username
         });        
