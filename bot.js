@@ -39,10 +39,12 @@ client.on('messageCreate', (msg) => {
 });
 
 client.on('messageCreate', (msg) => {
+    //Store the user message as a variable
     let userMessage = msg.content;
-    console.log(userMessage);
-
+    
+    //check if ! is appended to the message and if so, log and send content
     if (msg.content === '!' + userMessage) {
+        console.log(msg.content)
         msg.channel.send({
             content: "The Dynamic message sent is: " + userMessage | "Sent via " + msg.author.username
         });
