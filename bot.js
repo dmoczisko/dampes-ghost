@@ -41,7 +41,7 @@ client.on('messageCreate', (msg) => {
     if (msg.content === fullMessage) {
         msg.delete();
         msg.channel.send({
-            content: "Dad Joke of the Day | Sent via " + msg.author.username,
+            content: "Sent via | " + msg.author.username,
             files: [
                 "./graves/" + command + ".gif"
             ]
