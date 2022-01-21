@@ -24,7 +24,17 @@ client.on('messageCreate', (msg) => {
     const fullMessage = prefix + command;
     String(command);
 
-    if (msg.content === fullMessage) {
+    //Set up array for valid commands
+    const validCommands = ["dadjoke", "tassi"];
+    
+    // execute is available
+    if (validCommands.includes(command))
+      console.log("This command exists!");
+    else 
+      console.log("Nice try, fucko!");
+
+
+    if (msg.content === fullMessage && validCommands.includes(command)) {
         msg.delete();
         msg.channel.send({
             content: "Sent via | " + msg.author.username,
@@ -32,5 +42,8 @@ client.on('messageCreate', (msg) => {
                 "./graves/" + command + ".gif"
             ]
         });
+    }
+    else {
+        console.log("cmon man the command doesn't exist");
     }
 });
