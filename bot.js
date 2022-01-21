@@ -26,14 +26,8 @@ client.on('messageCreate', (msg) => {
 
     //Set up array for valid commands
     const validCommands = ["dadjoke", "tassi"];
-    
-    // execute is available
-    if (validCommands.includes(command))
-      console.log("This command exists!");
-    else 
-      console.log("Nice try, fucko!");
 
-
+    //Process message
     if (msg.content === fullMessage && validCommands.includes(command)) {
         msg.delete();
         msg.channel.send({
@@ -44,6 +38,12 @@ client.on('messageCreate', (msg) => {
         });
     }
     else {
-        console.log("cmon man the command doesn't exist");
+        msg.delete();
+        msg.channel.send({
+            content: "NEVA GONNA DIE!",
+            files: [
+                "./graves/dampe.gif"
+            ]
+        });
     }
 });
