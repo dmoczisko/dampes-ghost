@@ -25,7 +25,7 @@ client.on('messageCreate', (msg) => {
     String(command);
 
     //Set up array for valid commands
-    const validCommands = ["dadjoke", "tassi"];
+    const validCommands = ["dadjoke", "tassi" , "markmad", "perf", "pjk", "pulphalo", "socool", "teacher", "twistedtbag", "usererror"];
 
     //Process message
     if (msg.content === fullMessage && validCommands.includes(command)) {
@@ -40,7 +40,7 @@ client.on('messageCreate', (msg) => {
     else {
         msg.delete();
         msg.channel.send({
-            content: "NEVA GONNA DIE!",
+            content: "Nice Try, " +  msg.author.username + "I'm NEVA GONNA DIE!",
             files: [
                 "./graves/dampe.gif"
             ]
