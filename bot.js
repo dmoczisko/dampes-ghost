@@ -26,7 +26,8 @@ client.on('messageCreate', (msg) => {
 
     //Set up array for valid commands
     const validCommands = ["dadjoke", "tassi" , "markmad", "perf", "pjk", "pulphalo", "socool", "teacher", "twistedtbag", "usererror"];
-
+    const   seshCommands = ["create", "poll", "settings", "link", "list", "delete", "remind", "patreon", "vote"];
+    
     //Process message
     if (msg.content === fullMessage && validCommands.includes(command)) {
         msg.delete();
@@ -36,6 +37,9 @@ client.on('messageCreate', (msg) => {
                 "./graves/" + command + ".gif"
             ]
         });
+    }
+    else if (msg.content === fullMessage && seshCommands.includes(command)) {
+        ;
     }
     else {
         msg.delete();
