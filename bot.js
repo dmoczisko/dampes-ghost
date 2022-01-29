@@ -44,7 +44,7 @@ client.on('messageCreate', (msg) => {
     else {
         msg.delete();
         msg.channel.send({
-            content: "Nice Try, " +  msg.author.username + "I'm NEVA GONNA DIE!",
+            content: "Nice Try, " +  msg.author.username + " - I'm NEVA GONNA DIE!",
             files: [
                 "./graves/dampe.gif"
             ]
