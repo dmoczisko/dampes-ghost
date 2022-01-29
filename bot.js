@@ -26,7 +26,7 @@ client.on('messageCreate', (msg) => {
 
     //Set up array for valid commands
     const validCommands = ["dadjoke", "tassi" , "markmad", "perf", "pjk", "pulphalo", "socool", "teacher", "twistedtbag", "usererror"];
-    const   seshCommands = ["create", "poll", "settings", "link", "list", "delete", "remind", "patreon", "vote"];
+    const seshCommands = ["create", "poll", "settings", "link", "list", "delete", "remind", "patreon", "vote"];
     
     //Process message
     if (msg.content === fullMessage && validCommands.includes(command)) {
@@ -39,7 +39,7 @@ client.on('messageCreate', (msg) => {
         });
     }
     else if (msg.content === fullMessage && seshCommands.includes(command)) {
-        ;
+        console.log("sesh Command!");
     }
     else {
         msg.delete();
