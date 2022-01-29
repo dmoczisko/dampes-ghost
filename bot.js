@@ -38,7 +38,7 @@ client.on('messageCreate', (msg) => {
             ]
         });
     }
-    else if (msg.content === fullMessage && seshCommands.includes(command)) {
+    else if (msg.content === "testingSesh") {
         console.log("sesh Command!");
     }
     else {
