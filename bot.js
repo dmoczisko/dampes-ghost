@@ -31,6 +31,7 @@ client.on('messageCreate', (msg) => {
     //Process message
     if (msg.content === fullMessage && validCommands.includes(command)) {
         msg.delete();
+        console.log(command);
         msg.channel.send({
             content: "Sent via | " + msg.author.username,
             files: [
@@ -39,10 +40,11 @@ client.on('messageCreate', (msg) => {
         });
     }
     else if (msg.content === "testingSesh") {
-        console.log("sesh Command!");
+        console.log("else if statement: " + command);
     }
     else {
         msg.delete();
+        console.log( "else statement " + command);
         msg.channel.send({
             content: "Nice Try, " +  msg.author.username + " - I'm NEVA GONNA DIE!",
             files: [
