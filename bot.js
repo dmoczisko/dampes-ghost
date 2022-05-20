@@ -3,8 +3,24 @@ require('dotenv').config();
 
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] })
 
+const dateObj = new Date();
+const month = dateObj.getUTCMonth() + 1; //months from 1-12
+const day = dateObj.getUTCDate();
+
+newdate = month + "/" + day;
+
 client.on('ready', () => {
     console.log("You've found the Hookshot!");
+    
+    if (newdate == "5/19") {
+        console.log("Happy birthday Frosty!")
+    }
+    else if (newdate == "5/22") {
+        console.log("Happy birthday Maerkus!")
+    }
+    else {
+        console.log("It's nobody's birthday")
+    }    
 });
 
 client.login(process.env.BOT_TOKEN)
