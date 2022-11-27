@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-require('dotenv').config();
+const config = require("./config.json");
 
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] })
 
@@ -23,7 +23,7 @@ client.on('ready', () => {
     }    
 });
 
-client.login(process.env.BOT_TOKEN)
+client.login(config.BOT_TOKEN);
 
 client.on('messageCreate', (msg) => {
     //prefix variable is "!"
