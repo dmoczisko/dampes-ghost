@@ -10,10 +10,10 @@ client.on('ready', () => {
 });
 
 // Set the desired time for the message in 24-hour format (e.g., '18:00' for 6:00 PM)
-const scheduledTime = '12:10';
+const scheduledTime = '12:17';
 // Function to send the message
 function sendMessage() {
-    const channelID = 'YOUR_CHANNEL_ID'; // Replace with the channel ID where you want to send the message
+    const channelID = '252199801746227205/740285381320114306'; // Replace with the channel ID where you want to send the message
     const channel = client.channels.cache.get(channelID);
 
     if (channel) {
