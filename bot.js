@@ -1,34 +1,26 @@
 const Discord = require('discord.js');
 const config = require("./config.json");
-const cron = require('node-cron');
 
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] })
 
+const dateObj = new Date();
+const month = dateObj.getUTCMonth() + 1; //months from 1-12
+const day = dateObj.getUTCDate();
+
+newdate = month + "/" + day;
 
 client.on('ready', () => {
     console.log("You've found the Hookshot!");
+
+    // Schedule the message to be sent every day at 8:00 AM CT
+    cron.schedule('0 8 * * *', () => {
+        msg.channel.send("Does this shit work?")
+    }, {
+        timezone: 'America/Chicago' // Set the timezone to US Central Time (CT)
+    });
 });
-
-// Set the desired time for the message in 24-hour format (e.g., '18:00' for 6:00 PM)
-const scheduledTime = '12:17';
-// Function to send the message
-function sendMessage() {
-    const channelID = '252199801746227205/740285381320114306'; // Replace with the channel ID where you want to send the message
-    const channel = client.channels.cache.get(channelID);
-
-    if (channel) {
-        channel.send('This is your daily scheduled message!'); // Replace with your desired message content
-    } else {
-        console.error(`Unable to find channel with ID ${channelID}`);
-    }
-}
 
 client.login(config.BOT_TOKEN);
-
-// Schedule the task to run every day at the specified time
-cron.schedule(`0 ${scheduledTime} * * *`, () => {
-    sendMessage();
-});
 
 client.on('messageCreate', (msg) => {
     //prefix variable is "!"
