@@ -1,7 +1,6 @@
 const Discord = require('discord.js');
 const config = require("./config.json");
 const cron = require('node-cron');
-const channelID = '740285381320114306';
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] })
 
 const dateObj = new Date();
@@ -14,6 +13,7 @@ client.on('ready', () => {
     console.log("You've found the Hookshot!");
     // Schedule the immaculate grid link to be sent every day at 8:00 AM CT
     cron.schedule('0 8 * * *', () => {
+        const channelID = '740285381320114306';
         const channel = client.channels.cache.get(channelID);
         if (channel) {
             channel.send('https://www.immaculategrid.com/');
