@@ -1,61 +1,34 @@
 const Discord = require('discord.js');
 const config = require("./config.json");
+const cron = require('node-cron');
 
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] })
 
-const dateObj = new Date();
-const month = dateObj.getUTCMonth() + 1; //months from 1-12
-const day = dateObj.getUTCDate();
-
-newdate = month + "/" + day;
 
 client.on('ready', () => {
-    scheduleDailyMessage();
+    console.log("You've found the Hookshot!");
 });
 
-function sendDailyHyperlink(channel) {
-    const hyperlink = 'https://www.immaculategrid.com/'; // Replace with your desired hyperlink
+// Set the desired time for the message in 24-hour format (e.g., '18:00' for 6:00 PM)
+const scheduledTime = '12:10';
+// Function to send the message
+function sendMessage() {
+    const channelID = 'YOUR_CHANNEL_ID'; // Replace with the channel ID where you want to send the message
+    const channel = client.channels.cache.get(channelID);
 
-    const embed = new Discord.MessageEmbed()
-        .setTitle('Immaculate Grid')
-        .setDescription(`Click [here](${hyperlink}) to play!`)
-        .setColor('#FF0000');
-
-    channel.send(embed);
-}
-
-function scheduleDailyMessage() {
-    const channelID = '252199801746227205/740285381320114306'; // Replace with the channel ID where you want the message to be sent
-    const centralTimezoneOffset = -5; // US Central Time offset from UTC (currently -5)
-
-    const targetTime = new Date();
-    targetTime.setUTCHours(16 + centralTimezoneOffset); // 11:25 AM US Central Time (16:25 UTC)
-    targetTime.setUTCMinutes(35);
-    targetTime.setUTCSeconds(0);
-    targetTime.setUTCMilliseconds(0);
-
-    const currentTime = new Date();
-    const timeUntilTarget = targetTime - currentTime;
-
-    if (timeUntilTarget < 0) {
-        // If the target time has already passed for the day, add 24 hours to schedule it for the next day
-        targetTime.setUTCDate(targetTime.getUTCDate() + 1);
+    if (channel) {
+        channel.send('This is your daily scheduled message!'); // Replace with your desired message content
+    } else {
+        console.error(`Unable to find channel with ID ${channelID}`);
     }
-
-    const timeUntilNextDay = 24 * 60 * 60 * 1000; // 24 hours
-
-    setTimeout(() => {
-        const channel = client.channels.cache.get(channelID);
-        if (channel) {
-            sendDailyHyperlink(channel);
-            scheduleDailyMessage(); // Schedule the next daily message
-        }
-    }, timeUntilTarget);
-
-    setTimeout(scheduleDailyMessage, timeUntilNextDay); // Schedule the function to run every 24 hours
 }
 
 client.login(config.BOT_TOKEN);
+
+// Schedule the task to run every day at the specified time
+cron.schedule(`0 ${scheduledTime} * * *`, () => {
+    sendMessage();
+});
 
 client.on('messageCreate', (msg) => {
     //prefix variable is "!"
