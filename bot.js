@@ -31,7 +31,7 @@ function scheduleDailyMessage() {
 
     const targetTime = new Date();
     targetTime.setUTCHours(16 + centralTimezoneOffset); // 11:25 AM US Central Time (16:25 UTC)
-    targetTime.setUTCMinutes(25);
+    targetTime.setUTCMinutes(35);
     targetTime.setUTCSeconds(0);
     targetTime.setUTCMilliseconds(0);
 
