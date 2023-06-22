@@ -10,7 +10,6 @@ const day = dateObj.getUTCDate();
 newdate = month + "/" + day;
 
 client.on('ready', () => {
-    console.log(`Logged in as ${client.user.tag}`);
     scheduleDailyMessage();
 });
 
