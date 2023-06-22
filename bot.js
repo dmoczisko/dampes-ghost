@@ -2,7 +2,6 @@ const Discord = require('discord.js');
 const config = require("./config.json");
 const cron = require('node-cron');
 const channelID = '740285381320114306';
-const channel = client.channels.cache.get(channelID);
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] })
 
 const dateObj = new Date();
@@ -13,12 +12,14 @@ newdate = month + "/" + day;
 
 client.on('ready', () => {
     console.log("You've found the Hookshot!");
+    const channel = client.channels.cache.get(channelID);
     if (channel) {
         channel.send('[country codes](https://countrycode.org/)');
     }
     // Schedule the message to be sent every day at 8:00 AM CT
     cron.schedule('48 12 * * *', () => {
         console.log('Cron running with channelID ' + channelID);
+        const channel = client.channels.cache.get(channelID);
         if (channel) {
             channel.send('[country codes](https://countrycode.org/)');
         }
