@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const config = require("./config.json");
+const cron = require('node-cron');
 
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] })
 
@@ -11,9 +12,8 @@ newdate = month + "/" + day;
 
 client.on('ready', () => {
     console.log("You've found the Hookshot!");
-
     // Schedule the message to be sent every day at 8:00 AM CT
-    cron.schedule('0 8 * * *', () => {
+    cron.schedule('25 12 * * *', () => {
         msg.channel.send("Does this shit work?")
     }, {
         timezone: 'America/Chicago' // Set the timezone to US Central Time (CT)
