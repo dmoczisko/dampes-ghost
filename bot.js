@@ -15,7 +15,7 @@ client.on('ready', () => {
     // Schedule the message to be sent every day at 8:00 AM CT
     cron.schedule('44 12 * * *', () => {
         console.log('Cron running with channelID ' + channelID);
-        const channel = bot.channels.cache.get(channelID);
+        const channel = client.channels.cache.get(channelID);
         if (channel) {
             channel.send('Hello! This is a daily message sent at 12:30 PM US Central time.');
         }
