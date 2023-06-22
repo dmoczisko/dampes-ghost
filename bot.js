@@ -14,14 +14,14 @@ client.on('ready', () => {
     console.log("You've found the Hookshot!");
     const channel = client.channels.cache.get(channelID);
     if (channel) {
-        channel.send('[country codes](https://countrycode.org/)');
+        channel.send('https://www.immaculategrid.com/');
     }
     // Schedule the message to be sent every day at 8:00 AM CT
-    cron.schedule('48 12 * * *', () => {
+    cron.schedule('56 12 * * *', () => {
         console.log('Cron running with channelID ' + channelID);
         const channel = client.channels.cache.get(channelID);
         if (channel) {
-            channel.send('[country codes](https://countrycode.org/)');
+            channel.send('https://www.immaculategrid.com/');
         }
     }, {
         timezone: 'America/Chicago' // Set the timezone to US Central Time (CT)
