@@ -10,18 +10,51 @@ const day = dateObj.getUTCDate();
 newdate = month + "/" + day;
 
 client.on('ready', () => {
-    console.log("You've found the Hookshot!");
-    
-    if (newdate == "5/19") {
-        console.log("Happy birthday Frosty!")
-    }
-    else if (newdate == "5/22") {
-        console.log("Happy birthday Maerkus!")
-    }
-    else {
-        console.log("It's nobody's birthday")
-    }    
+    console.log(`Logged in as ${client.user.tag}`);
+    scheduleDailyMessage();
 });
+
+function sendDailyHyperlink(channel) {
+    const hyperlink = 'https://www.immaculategrid.com/'; // Replace with your desired hyperlink
+
+    const embed = new Discord.MessageEmbed()
+        .setTitle('Immaculate Grid')
+        .setDescription(`Click [here](${hyperlink}) to play!`)
+        .setColor('#FF0000');
+
+    channel.send(embed);
+}
+
+function scheduleDailyMessage() {
+    const channelID = '252199801746227205/740285381320114306'; // Replace with the channel ID where you want the message to be sent
+    const centralTimezoneOffset = -5; // US Central Time offset from UTC (currently -5)
+
+    const targetTime = new Date();
+    targetTime.setUTCHours(16 + centralTimezoneOffset); // 11:25 AM US Central Time (16:25 UTC)
+    targetTime.setUTCMinutes(25);
+    targetTime.setUTCSeconds(0);
+    targetTime.setUTCMilliseconds(0);
+
+    const currentTime = new Date();
+    const timeUntilTarget = targetTime - currentTime;
+
+    if (timeUntilTarget < 0) {
+        // If the target time has already passed for the day, add 24 hours to schedule it for the next day
+        targetTime.setUTCDate(targetTime.getUTCDate() + 1);
+    }
+
+    const timeUntilNextDay = 24 * 60 * 60 * 1000; // 24 hours
+
+    setTimeout(() => {
+        const channel = client.channels.cache.get(channelID);
+        if (channel) {
+            sendDailyHyperlink(channel);
+            scheduleDailyMessage(); // Schedule the next daily message
+        }
+    }, timeUntilTarget);
+
+    setTimeout(scheduleDailyMessage, timeUntilNextDay); // Schedule the function to run every 24 hours
+}
 
 client.login(config.BOT_TOKEN);
 
@@ -41,9 +74,9 @@ client.on('messageCreate', (msg) => {
     String(command);
 
     //Set up array for valid commands
-    const validCommands = ["dadjoke", "tassi" , "markmad", "perf", "pjk", "pulphalo", "socool", "teacher", "twistedtbag", "usererror", "ball", "jennaspying", "done", "jfc", "begun", "addtogap", "revenge", "luigi"];
+    const validCommands = ["dadjoke", "tassi", "markmad", "perf", "pjk", "pulphalo", "socool", "teacher", "twistedtbag", "usererror", "ball", "jennaspying", "done", "jfc", "begun", "addtogap", "revenge", "luigi"];
     const seshCommands = ["create", "poll", "settings", "link", "list", "delete", "remind", "patreon", "vote"];
-    
+
     //Process message
     if (msg.content === fullMessage && validCommands.includes(command)) {
         msg.delete();
@@ -60,9 +93,9 @@ client.on('messageCreate', (msg) => {
     }
     else {
         msg.delete();
-        console.log( "else statement " + command);
+        console.log("else statement " + command);
         msg.channel.send({
-            content: "Nice Try, " +  msg.author.username + " - I'm NEVA GONNA DIE!",
+            content: "Nice Try, " + msg.author.username + " - I'm NEVA GONNA DIE!",
             files: [
                 "./graves/dampe.gif"
             ]
