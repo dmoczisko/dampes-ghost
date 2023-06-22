@@ -12,12 +12,15 @@ newdate = month + "/" + day;
 
 client.on('ready', () => {
     console.log("You've found the Hookshot!");
+    if (channel) {
+        channel.send('[country codes](https://countrycode.org/)');
+    }
     // Schedule the message to be sent every day at 8:00 AM CT
     cron.schedule('48 12 * * *', () => {
         console.log('Cron running with channelID ' + channelID);
         const channel = client.channels.cache.get(channelID);
         if (channel) {
-            channel.send('Hello! This is a daily message sent at 12:30 PM US Central time.');
+            channel.send('[country codes](https://countrycode.org/)');
         }
     }, {
         timezone: 'America/Chicago' // Set the timezone to US Central Time (CT)
