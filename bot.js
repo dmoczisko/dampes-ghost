@@ -13,8 +13,9 @@ newdate = month + "/" + day;
 client.on('ready', () => {
     console.log("You've found the Hookshot!");
     // Schedule the message to be sent every day at 8:00 AM CT
-    cron.schedule('25 12 * * *', () => {
-        msg.channel.send("Does this shit work?")
+    cron.schedule('28 12 * * *', () => {
+        console.log("YOOOO 1228");
+        msg.channel.send("Does this shit work?");
     }, {
         timezone: 'America/Chicago' // Set the timezone to US Central Time (CT)
     });
