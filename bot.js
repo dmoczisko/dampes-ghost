@@ -17,6 +17,10 @@ client.on('ready', () => {
         const channel = client.channels.cache.get(channelID);
         if (channel) {
             channel.send('https://www.immaculategrid.com/');
+            console.log("your cron ran successfully");
+        }
+        else {
+            console.log("No cron here, wtf?")
         }
     }, {
         timezone: 'America/Chicago' // Set the timezone to US Central Time (CT)
