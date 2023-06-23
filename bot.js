@@ -1,26 +1,34 @@
 const Discord = require('discord.js');
 const config = require("./config.json");
 const cron = require('node-cron');
+const winston = require('winston');
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] })
 
-const dateObj = new Date();
-const month = dateObj.getUTCMonth() + 1; //months from 1-12
-const day = dateObj.getUTCDate();
-
-newdate = month + "/" + day;
+const logger = winston.createLogger({
+    transports: [
+        new winston.transports.File({
+            filename: 'bot.log',
+            level: 'info', // Adjust log level as needed (info, warn, error, etc.)
+            format: winston.format.combine(
+                winston.format.timestamp(),
+                winston.format.printf(info => `${info.timestamp} ${info.level}: ${info.message}`)
+            )
+        })
+    ]
+});
 
 client.on('ready', () => {
-    console.log("You've found the Hookshot!");
+    logger.info('Hookshot started!');
     // Schedule the immaculate grid link to be sent every day at 8:00 AM CT
     cron.schedule('30 7 * * *', () => {
         const channelID = '740285381320114306';
         const channel = client.channels.cache.get(channelID);
         if (channel) {
+            logger.info('Immaculate Grid 730am Send');
             channel.send('https://www.immaculategrid.com/');
-            console.log("your cron ran successfully");
         }
         else {
-            console.log("No cron here, wtf?")
+            logger.error('Error: else block of cron ran with channel id: ' + channel);
         }
     }, {
         timezone: 'America/Chicago' // Set the timezone to US Central Time (CT)
@@ -51,7 +59,7 @@ client.on('messageCreate', (msg) => {
     //Process message
     if (msg.content === fullMessage && validCommands.includes(command)) {
         msg.delete();
-        console.log(command);
+        logger.info(command);
         msg.channel.send({
             content: "Sent via | " + msg.author.username,
             files: [
@@ -60,11 +68,11 @@ client.on('messageCreate', (msg) => {
         });
     }
     else if (msg.content === "testingSesh") {
-        console.log("else if statement: " + command);
+        logger.info("else if statement: " + command);
     }
     else {
         msg.delete();
-        console.log("else statement " + command);
+        logger.info("else statement " + command);
         msg.channel.send({
             content: "Nice Try, " + msg.author.username + " - I'm NEVA GONNA DIE!",
             files: [
