@@ -5,16 +5,12 @@ const winston = require('winston');
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] })
 
 const logger = winston.createLogger({
+    level: 'info',
+    format: winston.format.simple(),
     transports: [
-        new winston.transports.File({
-            filename: 'bot.log',
-            level: 'info', // Adjust log level as needed (info, warn, error, etc.)
-            format: winston.format.combine(
-                winston.format.timestamp(),
-                winston.format.printf(info => `${info.timestamp} ${info.level}: ${info.message}`)
-            )
-        })
-    ]
+        new winston.transports.Console(),
+        new winston.transports.File({ filename: 'dampelogs.log' }),
+    ],
 });
 
 client.on('ready', () => {
