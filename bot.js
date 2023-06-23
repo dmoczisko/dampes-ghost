@@ -12,7 +12,7 @@ newdate = month + "/" + day;
 client.on('ready', () => {
     console.log("You've found the Hookshot!");
     // Schedule the immaculate grid link to be sent every day at 8:00 AM CT
-    cron.schedule('25 8 * * *', () => {
+    cron.schedule('30 8 * * *', () => {
         const channelID = '740285381320114306';
         const channel = client.channels.cache.get(channelID);
         if (channel) {
