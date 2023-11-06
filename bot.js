@@ -29,6 +29,19 @@ client.on('ready', () => {
     }, {
         timezone: 'America/Chicago' // Set the timezone to US Central Time (CT)
     });
+     cron.schedule('10 9 * * 1', () => {
+        const channelID = '740285381320114306';
+        const channel = client.channels.cache.get(channelID);
+        if (channel) {
+            logger.info('Twisted T Bag Time!');
+            channel.send('!twistedtbag');
+        }
+        else {
+            logger.error('Error: else block of cron ran with channel id: ' + channel);
+        }
+    }, {
+        timezone: 'America/Chicago' // Set the timezone to US Central Time (CT)
+    });
 });
 
 client.login(config.BOT_TOKEN);
