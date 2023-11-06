@@ -34,6 +34,7 @@ client.on('ready', () => {
         const channel = client.channels.cache.get(channelID);
         if (channel) {
             logger.info('Twisted T Bag Time!');
+            channel.send('Fiesta Night!');
             channel.send('!twistedtbag');
         }
         else {
