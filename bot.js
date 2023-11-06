@@ -29,13 +29,13 @@ client.on('ready', () => {
     }, {
         timezone: 'America/Chicago' // Set the timezone to US Central Time (CT)
     });
-     cron.schedule('50 9 * * 1', () => {
+     cron.schedule('15 2 * * 3', () => {
         const channelID = '740285381320114306';
         const channel = client.channels.cache.get(channelID);
         if (channel) {
             logger.info('Twisted T Bag Time!');
-            channel.send('Fiesta Night!');
-            msg.channel.send({
+            channel.send('Fiesta Night! I need a weapon...');
+            channel.send({
             files: [
                 "./graves/twistedtbag.gif"
             ]
