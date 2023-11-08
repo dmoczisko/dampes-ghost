@@ -53,7 +53,7 @@ client.on('ready', () => {
         const channel = client.channels.cache.get(channelID);
         if (channel) {
             logger.info('Bomb Back');
-            channel.send('Sir, permission to join the voice channel. For what purpose? To give the covenant their bomb back!');
+            channel.send('Sir, permission to join the voice channel. For what purpose Dampes Ghost? To give the Covenant back their bomb');
             channel.send({
                 files: [
                     "./graves/twistedtbag.gif"
