@@ -48,7 +48,7 @@ client.on('ready', () => {
         timezone: 'America/Chicago' // Set the timezone to US Central Time (CT)
     });
 
-    cron.schedule('15 7 * * 3', () => {
+    cron.schedule('15 19 * * 3', () => {
         const channelID = '740285381320114306';
         const channel = client.channels.cache.get(channelID);
         if (channel) {
