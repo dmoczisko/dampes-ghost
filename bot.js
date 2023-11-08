@@ -29,24 +29,44 @@ client.on('ready', () => {
     }, {
         timezone: 'America/Chicago' // Set the timezone to US Central Time (CT)
     });
-     cron.schedule('15 2 * * 3', () => {
+    cron.schedule('15 2 * * 3', () => {
         const channelID = '740285381320114306';
         const channel = client.channels.cache.get(channelID);
         if (channel) {
             logger.info('Twisted T Bag Time!');
             channel.send('Fiesta Night! I need a weapon...');
             channel.send({
-            files: [
-                "./graves/twistedtbag.gif"
-            ]
-        });
+                files: [
+                    "./graves/twistedtbag.gif"
+                ]
+            });
         }
         else {
-            logger.error('Error: else block of cron ran with channel id: ' + channel);
+            logger.error('Error: else block of T bag time ran with channel id: ' + channel);
         }
     }, {
         timezone: 'America/Chicago' // Set the timezone to US Central Time (CT)
     });
+
+    cron.schedule('15 7 * * 3', () => {
+        const channelID = '740285381320114306';
+        const channel = client.channels.cache.get(channelID);
+        if (channel) {
+            logger.info('Bomb Back');
+            channel.send('Sir, permission to join the voice channel. For what purpose? To give the covenant their bomb back!');
+            channel.send({
+                files: [
+                    "./graves/twistedtbag.gif"
+                ]
+            });
+        }
+        else {
+            logger.error('Error: else block of bomb back message ran with channel id: ' + channel);
+        }
+    }, {
+        timezone: 'America/Chicago' // Set the timezone to US Central Time (CT)
+    });
+
 });
 
 client.login(config.BOT_TOKEN);
