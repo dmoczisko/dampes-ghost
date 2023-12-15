@@ -15,6 +15,14 @@ const logger = winston.createLogger({
 
 client.on('ready', () => {
     logger.info('Hookshot started!');
+
+    msg.channel.send({
+            content: "Sent via | " + "Dampe's Ghost",
+            files: [
+                "./graves/imback.gif"
+            ]
+        });
+    
     // Schedule the immaculate grid link to be sent every day at 8:00 AM CT
     cron.schedule('30 7 * * *', () => {
         const channelID = '740285381320114306';
