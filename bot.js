@@ -16,27 +16,20 @@ const logger = winston.createLogger({
 client.on('ready', () => {
     logger.info('Hookshot started!');
 
-    msg.channel.send({
-            content: "Sent via | " + "Dampe's Ghost",
+    const channelID = '740285381320114306';
+    const channel = client.channels.cache.get(channelID);
+    if (channel) {
+        logger.info('Dampes Back - boot up start gif');
+        channel.send({
             files: [
                 "./graves/imback.gif"
             ]
         });
+    }
+    else {
+        logger.error('Error: else block of startup imback gif ran with channel id: ' + channel);
+    }
     
-    // Schedule the immaculate grid link to be sent every day at 8:00 AM CT
-    cron.schedule('30 7 * * *', () => {
-        const channelID = '740285381320114306';
-        const channel = client.channels.cache.get(channelID);
-        if (channel) {
-            logger.info('Immaculate Grid 730am Send');
-            channel.send('https://www.immaculategrid.com/');
-        }
-        else {
-            logger.error('Error: else block of cron ran with channel id: ' + channel);
-        }
-    }, {
-        timezone: 'America/Chicago' // Set the timezone to US Central Time (CT)
-    });
     cron.schedule('15 2 * * 3', () => {
         const channelID = '740285381320114306';
         const channel = client.channels.cache.get(channelID);
