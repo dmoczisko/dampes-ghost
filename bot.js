@@ -29,8 +29,8 @@ client.on('ready', () => {
     else {
         logger.error('Error: else block of startup imback gif ran with channel id: ' + channel);
     }
-    
-    cron.schedule('15 2 * * 3', () => {
+
+    cron.schedule('15 14 * * 3', () => {
         const channelID = '740285381320114306';
         const channel = client.channels.cache.get(channelID);
         if (channel) {
