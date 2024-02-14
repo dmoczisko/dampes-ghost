@@ -34,16 +34,15 @@ client.on('ready', () => {
         const channelID = '740285381320114306';
         const channel = client.channels.cache.get(channelID);
         if (channel) {
-            logger.info('Twisted T Bag Time!');
-            channel.send('Fiesta Night! I need a weapon...');
+            logger.info('Game Night!');
             channel.send({
                 files: [
-                    "./graves/twistedtbag.gif"
+                    "./graves/gamenight.gif"
                 ]
             });
         }
         else {
-            logger.error('Error: else block of T bag time ran with channel id: ' + channel);
+            logger.error('Error: else block of Game Night ran with channel id: ' + channel);
         }
     }, {
         timezone: 'America/Chicago' // Set the timezone to US Central Time (CT)
@@ -54,10 +53,10 @@ client.on('ready', () => {
         const channel = client.channels.cache.get(channelID);
         if (channel) {
             logger.info('Bomb Back');
-            channel.send('Sir, permission to join the voice channel. For what purpose Dampes Ghost? To give the Covenant back their bomb');
+            channel.send('4 to 1, eh? I like these odds');
             channel.send({
                 files: [
-                    "./graves/twistedtbag.gif"
+                    "./graves/aliens.gif"
                 ]
             });
         }
@@ -88,7 +87,7 @@ client.on('messageCreate', (msg) => {
     String(command);
 
     //Set up array for valid commands
-    const validCommands = ["dadjoke", "tassi", "markmad", "perf", "pjk", "pulphalo", "socool", "teacher", "twistedtbag", "usererror", "ball", "jennaspying", "done", "jfc", "begun", "addtogap", "revenge", "luigi", "imback"];
+    const validCommands = ["dadjoke", "tassi", "markmad", "perf", "pjk", "pulphalo", "socool", "teacher", "twistedtbag", "usererror", "ball", "jennaspying", "done", "jfc", "begun", "addtogap", "revenge", "luigi", "imback", "gamenight", "aliens"];
     const seshCommands = ["create", "poll", "settings", "link", "list", "delete", "remind", "patreon", "vote"];
 
     //Process message
