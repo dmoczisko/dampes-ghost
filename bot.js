@@ -48,15 +48,15 @@ client.on('ready', () => {
         timezone: 'America/Chicago' // Set the timezone to US Central Time (CT)
     });
 
-    cron.schedule('15 19 * * 3', () => {
+    cron.schedule('15 14 * * 3', () => {
         const channelID = '740285381320114306';
         const channel = client.channels.cache.get(channelID);
         if (channel) {
             logger.info('Bomb Back');
-            channel.send('4 to 1, eh? I like these odds');
+            channel.send('How about a nice big cup of Liber-TEA!');
             channel.send({
                 files: [
-                    "./graves/aliens.gif"
+                    "./graves/helldivers.gif"
                 ]
             });
         }
@@ -66,7 +66,24 @@ client.on('ready', () => {
     }, {
         timezone: 'America/Chicago' // Set the timezone to US Central Time (CT)
     });
-
+    cron.schedule('15 19 * * 3', () => {
+        const channelID = '740285381320114306';
+        const channel = client.channels.cache.get(channelID);
+        if (channel) {
+            logger.info('Samples Gif');
+            channel.send('Another sample for de-mo-cra-cy!');
+            channel.send({
+                files: [
+                    "./graves/hdsamples.gif"
+                ]
+            });
+        }
+        else {
+            logger.error('Error: else block of Game Night ran with channel id: ' + channel);
+        }
+    }, {
+        timezone: 'America/Chicago' // Set the timezone to US Central Time (CT)
+    });
 });
 
 client.login(config.BOT_TOKEN);
@@ -87,7 +104,7 @@ client.on('messageCreate', (msg) => {
     String(command);
 
     //Set up array for valid commands
-    const validCommands = ["dadjoke", "tassi", "markmad", "perf", "pjk", "pulphalo", "socool", "teacher", "twistedtbag", "usererror", "ball", "jennaspying", "done", "jfc", "begun", "addtogap", "revenge", "luigi", "imback", "gamenight", "aliens"];
+    const validCommands = ["dadjoke", "tassi", "markmad", "perf", "pjk", "pulphalo", "socool", "teacher", "twistedtbag", "usererror", "ball", "jennaspying", "done", "jfc", "begun", "addtogap", "revenge", "luigi", "imback", "gamenight", "aliens", "helldivers", "hdsamples"];
     const seshCommands = ["create", "poll", "settings", "link", "list", "delete", "remind", "patreon", "vote"];
 
     //Process message
