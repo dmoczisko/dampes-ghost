@@ -104,7 +104,7 @@ client.on('messageCreate', (msg) => {
     String(command);
 
     //Set up array for valid commands
-    const validCommands = ["dadjoke", "tassi", "markmad", "perf", "pjk", "pulphalo", "socool", "teacher", "twistedtbag", "usererror", "ball", "jennaspying", "done", "jfc", "begun", "addtogap", "revenge", "luigi", "imback", "gamenight", "aliens", "helldivers", "hdsamples"];
+    const validCommands = ["dadjoke", "tassi", "markmad", "perf", "pjk", "pulphalo", "socool", "teacher", "twistedtbag", "usererror", "ball", "jennaspying", "done", "jfc", "begun", "addtogap", "revenge", "luigi", "imback", "gamenight", "aliens", "helldivers", "hdsamples", "chronos"];
     const seshCommands = ["create", "poll", "settings", "link", "list", "delete", "remind", "patreon", "vote"];
 
     //Process message
