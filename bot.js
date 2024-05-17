@@ -84,6 +84,47 @@ client.on('ready', () => {
     }, {
         timezone: 'America/Chicago' // Set the timezone to US Central Time (CT)
     });
+
+    // Happy Birthday Danny!
+    cron.schedule('0 7 19 5 *', () => {
+        const channelID = '740285381320114306';
+        const channel = client.channels.cache.get(channelID);
+        if (channel) {
+            logger.info('Dannys Birthday');
+            channel.send('Happy Birthday Fr0sty!!!');
+            channel.send({
+                files: [
+                    "./graves/gruntbday.gif"
+                ]
+            });
+        }
+        else {
+            logger.error('Error: Dannys Birthday message did not work: ' + channel);
+        }
+    }, {
+        timezone: 'America/Chicago' // Set the timezone to US Central Time (CT)
+    });
+
+    // Happy Birthday Mark!
+    cron.schedule('0 7 22 5 *', () => {
+        const channelID = '740285381320114306';
+        const channel = client.channels.cache.get(channelID);
+        if (channel) {
+            logger.info('Marks Birthday');
+            channel.send('Happy Birthday Mark!!!');
+            channel.send({
+                files: [
+                    "./graves/gruntbday.gif"
+                ]
+            });
+        }
+        else {
+            logger.error('Error: Marks Birthday message did not work: ' + channel);
+        }
+    }, {
+        timezone: 'America/Chicago' // Set the timezone to US Central Time (CT)
+    });
+
 });
 
 client.login(config.BOT_TOKEN);
@@ -104,7 +145,7 @@ client.on('messageCreate', (msg) => {
     String(command);
 
     //Set up array for valid commands
-    const validCommands = ["dadjoke", "tassi", "markmad", "perf", "pjk", "pulphalo", "socool", "teacher", "twistedtbag", "usererror", "ball", "jennaspying", "done", "jfc", "begun", "addtogap", "revenge", "luigi", "imback", "gamenight", "aliens", "helldivers", "hdsamples", "chronos"];
+    const validCommands = ["dadjoke", "tassi", "markmad", "perf", "pjk", "pulphalo", "socool", "teacher", "twistedtbag", "usererror", "ball", "jennaspying", "done", "jfc", "begun", "addtogap", "revenge", "luigi", "imback", "gamenight", "aliens", "helldivers", "hdsamples", "chronos", "gruntbday "];
     const seshCommands = ["create", "poll", "settings", "link", "list", "delete", "remind", "patreon", "vote"];
 
     //Process message
