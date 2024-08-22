@@ -52,16 +52,16 @@ client.on('ready', () => {
         const channelID = '740285381320114306';
         const channel = client.channels.cache.get(channelID);
         if (channel) {
-            logger.info('Bomb Back');
-            channel.send('How about a nice big cup of Liber-TEA!');
+            logger.info('Power Rangers Gif Send');
+            channel.send('Idc play whatever you want');
             channel.send({
                 files: [
-                    "./graves/helldivers.gif"
+                    "./graves/shrug.gif"
                 ]
             });
         }
         else {
-            logger.error('Error: else block of bomb back message ran with channel id: ' + channel);
+            logger.error('Error: else block of Power Rangers message ran with channel id: ' + channel);
         }
     }, {
         timezone: 'America/Chicago' // Set the timezone to US Central Time (CT)
@@ -70,11 +70,11 @@ client.on('ready', () => {
         const channelID = '740285381320114306';
         const channel = client.channels.cache.get(channelID);
         if (channel) {
-            logger.info('Samples Gif');
-            channel.send('Another sample for de-mo-cra-cy!');
+            logger.info('Evening Message Gif');
+            channel.send('Trying to figure out what people playing this week be like');
             channel.send({
                 files: [
-                    "./graves/hdsamples.gif"
+                    "./graves/spin.gif"
                 ]
             });
         }
@@ -133,6 +133,8 @@ client.on('messageCreate', (msg) => {
     //prefix variable is "!"
     const prefix = '!';
 
+    const { MessageEmbed } = require('discord.js');
+
     //if message doesn't start with prefix or is from bot, return
     if (!msg.content.startsWith(prefix) || msg.author.bot) return;
 
@@ -145,7 +147,7 @@ client.on('messageCreate', (msg) => {
     String(command);
 
     //Set up array for valid commands
-    const validCommands = ["dadjoke", "tassi", "markmad", "perf", "pjk", "pulphalo", "socool", "teacher", "twistedtbag", "usererror", "ball", "jennaspying", "done", "jfc", "begun", "addtogap", "revenge", "luigi", "imback", "gamenight", "aliens", "helldivers", "hdsamples", "chronos", "gruntbday "];
+    const validCommands = ["dadjoke", "tassi", "markmad", "perf", "pjk", "pulphalo", "socool", "teacher", "twistedtbag", "usererror", "ball", "jennaspying", "done", "jfc", "begun", "addtogap", "revenge", "luigi", "imback", "gamenight", "aliens", "helldivers", "hdsamples", "chronos", "gruntbday", "shrug", "spin"];
     const seshCommands = ["create", "poll", "settings", "link", "list", "delete", "remind", "patreon", "vote"];
 
     //Process message
@@ -161,6 +163,17 @@ client.on('messageCreate', (msg) => {
     }
     else if (msg.content === "testingSesh") {
         logger.info("else if statement: " + command);
+    }
+    else if (msg.content === `${prefix}commands`) {
+        msg.delete();
+        logger.info("Commands list requested");
+
+        const embed = new MessageEmbed()
+            .setTitle('Available Commands')
+            .setDescription(validCommands.join('\n'))
+            .setColor('#ff0077');
+
+        msg.channel.send({ embeds: [embed] });
     }
     else {
         msg.delete();
