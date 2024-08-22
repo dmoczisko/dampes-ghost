@@ -147,7 +147,7 @@ client.on('messageCreate', (msg) => {
     String(command);
 
     //Set up array for valid commands
-    const validCommands = ["dadjoke", "tassi", "markmad", "perf", "pjk", "pulphalo", "socool", "teacher", "twistedtbag", "usererror", "ball", "jennaspying", "done", "jfc", "begun", "addtogap", "revenge", "luigi", "imback", "gamenight", "aliens", "helldivers", "hdsamples", "chronos", "gruntbday", "shrug", "spin"];
+    const validCommands = ["dadjoke", "tassi", "markmad", "perf", "pjk", "pulphalo", "socool", "teacher", "twistedtbag", "usererror", "ball", "jennaspying", "done", "jfc", "begun", "addtogap", "revenge", "luigi", "imback", "gamenight", "aliens", "helldivers", "hdsamples", "chronos", "gruntbday", "shrug", "spin", "coneofshame"];
     const seshCommands = ["create", "poll", "settings", "link", "list", "delete", "remind", "patreon", "vote"];
 
     //Process message
@@ -178,10 +178,16 @@ client.on('messageCreate', (msg) => {
     else {
         msg.delete();
         logger.info("else statement " + command);
+        const embed = new MessageEmbed()
+            .setTitle('Available Commands')
+            .setDescription(validCommands.join('\n'))
+            .setColor('#ff0077');
+
         msg.channel.send({
-            content: "Nice Try, " + msg.author.username + " - I'm NEVA GONNA DIE!",
+            content: "It's dangerous to go alone, take these " + msg.author.username,
+            embeds: [embed],
             files: [
-                "./graves/dampe.gif"
+                "./graves/coneofshame.gif"
             ]
         });
     }
