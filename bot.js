@@ -18,6 +18,7 @@ client.on('ready', () => {
     logger.info('Hookshot started!');
 
     const channelID = '740285381320114306';
+    const gChannelID = '252199801746227205';
     const channel = client.channels.cache.get(channelID);
     if (channel) {
         logger.info('Dampes Back - boot up start gif');
@@ -31,8 +32,27 @@ client.on('ready', () => {
         logger.error('Error: else block of startup imback gif ran with channel id: ' + channel);
     }
 
+    // Schedule a dad joke to be sent every day at 8 AM US Central Time
+    cron.schedule('0 8 * * *', () => {
+        const channel = client.channels.cache.get(gChannelID);
+        if (channel) {
+            logger.info('Sending daily dad joke');
+            const joke = getRandomJoke();
+            channel.send({
+                content: joke,
+                files: [
+                    "./graves/dadjoke.gif"
+                ]
+            });
+        }
+        else {
+            logger.error('Error: daily dad joke message did not work: ' + channel);
+        }
+    }, {
+        timezone: 'America/Chicago' // Set the timezone to US Central Time (CT)
+    });
+
     cron.schedule('15 14 * * 3', () => {
-        const channelID = '740285381320114306';
         const channel = client.channels.cache.get(channelID);
         if (channel) {
             logger.info('Game Night!');
@@ -50,7 +70,6 @@ client.on('ready', () => {
     });
 
     cron.schedule('15 14 * * 3', () => {
-        const channelID = '740285381320114306';
         const channel = client.channels.cache.get(channelID);
         if (channel) {
             logger.info('Power Rangers Gif Send');
@@ -68,7 +87,6 @@ client.on('ready', () => {
         timezone: 'America/Chicago' // Set the timezone to US Central Time (CT)
     });
     cron.schedule('15 19 * * 3', () => {
-        const channelID = '740285381320114306';
         const channel = client.channels.cache.get(channelID);
         if (channel) {
             logger.info('Evening Message Gif');
@@ -88,7 +106,6 @@ client.on('ready', () => {
 
     // Happy Birthday Danny!
     cron.schedule('0 7 19 5 *', () => {
-        const channelID = '740285381320114306';
         const channel = client.channels.cache.get(channelID);
         if (channel) {
             logger.info('Dannys Birthday');
@@ -108,7 +125,6 @@ client.on('ready', () => {
 
     // Happy Birthday Mark!
     cron.schedule('0 7 22 5 *', () => {
-        const channelID = '740285381320114306';
         const channel = client.channels.cache.get(channelID);
         if (channel) {
             logger.info('Marks Birthday');
@@ -151,19 +167,17 @@ client.on('messageCreate', (msg) => {
     const validCommands = ["dadjoke", "tassi", "markmad", "perf", "pjk", "pulphalo", "socool", "teacher", "twistedtbag", "usererror", "ball", "jennaspying", "done", "jfc", "begun", "addtogap", "revenge", "luigi", "imback", "gamenight", "aliens", "helldivers", "hdsamples", "chronos", "gruntbday", "shrug", "spin", "coneofshame"];
     const seshCommands = ["create", "poll", "settings", "link", "list", "delete", "remind", "patreon", "vote"];
 
-    //Process message
-    if (msg.content === fullMessage && validCommands.includes(command)) {
+    // dadjoke message first to usurp all other commands
+    if (msg.content === `${prefix}dadjoke`) {
         msg.delete();
-        logger.info(command);
+        logger.info("Dad Joke requested");
+        const joke = getRandomJoke();
         msg.channel.send({
-            content: "Sent via | " + msg.author.username,
+            content: joke,
             files: [
-                "./graves/" + command + ".gif"
+                "./graves/dadjoke.gif"
             ]
         });
-    }
-    else if (msg.content === "testingSesh") {
-        logger.info("else if statement: " + command);
     }
     else if (msg.content === `${prefix}commands`) {
         msg.delete();
@@ -176,14 +190,19 @@ client.on('messageCreate', (msg) => {
 
         msg.channel.send({ embeds: [embed] });
     }
-    else if (msg.content === `${prefix}dadjoke`) {
-        const joke = getRandomJoke();
+    //Process other messages
+    else if (msg.content === fullMessage && validCommands.includes(command)) {
+        msg.delete();
+        logger.info(command);
         msg.channel.send({
-            content: joke,
+            content: "Sent via | " + msg.author.username,
             files: [
-                "./graves/dadjoke.gif"
+                "./graves/" + command + ".gif"
             ]
         });
+    }
+    else if (msg.content === "testingSesh") {
+        logger.info("else if statement: " + command);
     }
     else {
         msg.delete();
