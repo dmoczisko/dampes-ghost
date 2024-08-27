@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const config = require("./config.json");
 const cron = require('node-cron');
 const winston = require('winston');
+const { getRandomJoke } = require('./dadJokes');
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] })
 
 const logger = winston.createLogger({
@@ -174,6 +175,15 @@ client.on('messageCreate', (msg) => {
             .setColor('#ff0077');
 
         msg.channel.send({ embeds: [embed] });
+    }
+    else if (msg.content === `${prefix}dadjoke`) {
+        const joke = getRandomJoke();
+        msg.channel.send({
+            content: joke,
+            files: [
+                "./graves/dadjoke.gif"
+            ]
+        });
     }
     else {
         msg.delete();
