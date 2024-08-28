@@ -55,10 +55,10 @@ client.on('ready', () => {
     cron.schedule('15 14 * * 3', () => {
         const channel = client.channels.cache.get(channelID);
         if (channel) {
-            logger.info('Game Night!');
+            logger.info('Wonderlands Wednesday!!!');
             channel.send({
                 files: [
-                    "./graves/gamenight.gif"
+                    "./graves/wonderlands.gif"
                 ]
             });
         }
@@ -72,11 +72,11 @@ client.on('ready', () => {
     cron.schedule('15 14 * * 3', () => {
         const channel = client.channels.cache.get(channelID);
         if (channel) {
-            logger.info('Power Rangers Gif Send');
-            channel.send('Idc play whatever you want');
+            logger.info('Tippy Gif Send');
+            channel.send('Stop staring at my TIPS!');
             channel.send({
                 files: [
-                    "./graves/shrug.gif"
+                    "./graves/tippy.gif"
                 ]
             });
         }
@@ -86,14 +86,15 @@ client.on('ready', () => {
     }, {
         timezone: 'America/Chicago' // Set the timezone to US Central Time (CT)
     });
+
     cron.schedule('15 19 * * 3', () => {
         const channel = client.channels.cache.get(channelID);
         if (channel) {
             logger.info('Evening Message Gif');
-            channel.send('Trying to figure out what people playing this week be like');
+            channel.send('YOU MAY BE ASKING YOURSELF WHO WAS WEARING THE BOLO TIE, ME OR THE SHARK... ANSWER: YES!');
             channel.send({
                 files: [
-                    "./graves/spin.gif"
+                    "./graves/guitarrifblands.gif"
                 ]
             });
         }
@@ -164,7 +165,7 @@ client.on('messageCreate', (msg) => {
     String(command);
 
     //Set up array for valid commands
-    const validCommands = ["dadjoke", "tassi", "markmad", "perf", "pjk", "pulphalo", "socool", "teacher", "twistedtbag", "usererror", "ball", "jennaspying", "done", "jfc", "begun", "addtogap", "revenge", "luigi", "imback", "gamenight", "aliens", "helldivers", "hdsamples", "chronos", "gruntbday", "shrug", "spin", "coneofshame"];
+    const validCommands = ["dadjoke", "dadjokev", "tassi", "markmad", "perf", "pjk", "pulphalo", "socool", "teacher", "twistedtbag", "usererror", "ball", "jennaspying", "done", "jfc", "begun", "addtogap", "revenge", "luigi", "imback", "gamenight", "aliens", "helldivers", "hdsamples", "chronos", "gruntbday", "shrug", "spin", "coneofshame"];
     const seshCommands = ["create", "poll", "settings", "link", "list", "delete", "remind", "patreon", "vote"];
 
     // dadjoke message first to usurp all other commands
