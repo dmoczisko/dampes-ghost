@@ -52,65 +52,32 @@ client.on('ready', () => {
         timezone: 'America/Chicago' // Set the timezone to US Central Time (CT)
     });
 
-    cron.schedule('15 14 * * 3', () => {
+    // Happy Birthday Kyle!
+    cron.schedule('0 7 16 2 *', () => {
         const channel = client.channels.cache.get(channelID);
         if (channel) {
-            logger.info('Wonderlands Wednesday!!!');
+            logger.info('Kyles Birthday');
+            channel.send('Happy Birthday Kyle!!!');
             channel.send({
                 files: [
-                    "./graves/wonderlands.gif"
+                    "./graves/gruntbday.gif"
                 ]
             });
         }
         else {
-            logger.error('Error: else block of Game Night ran with channel id: ' + channel);
+            logger.error('Error: Kyles Birthday message did not work: ' + channel);
         }
     }, {
         timezone: 'America/Chicago' // Set the timezone to US Central Time (CT)
     });
 
-    cron.schedule('15 14 * * 3', () => {
-        const channel = client.channels.cache.get(channelID);
-        if (channel) {
-            logger.info('Tippy Gif Send');
-            channel.send('Stop staring at my TIPS!');
-            channel.send({
-                files: [
-                    "./graves/tippy.gif"
-                ]
-            });
-        }
-        else {
-            logger.error('Error: else block of Power Rangers message ran with channel id: ' + channel);
-        }
-    }, {
-        timezone: 'America/Chicago' // Set the timezone to US Central Time (CT)
-    });
-
-    cron.schedule('15 19 * * 3', () => {
-        const channel = client.channels.cache.get(channelID);
-        if (channel) {
-            logger.info('Evening Message Gif');
-            channel.send('YOU MAY BE ASKING YOURSELF WHO WAS WEARING THE BOLO TIE, ME OR THE SHARK... ANSWER: YES!');
-            channel.send({
-                files: [
-                    "./graves/guitarrifblands.gif"
-                ]
-            });
-        }
-        else {
-            logger.error('Error: else block of Game Night ran with channel id: ' + channel);
-        }
-    }, {
-        timezone: 'America/Chicago' // Set the timezone to US Central Time (CT)
-    });
 
     // Happy Birthday Danny!
     cron.schedule('0 7 19 5 *', () => {
         const channel = client.channels.cache.get(channelID);
         if (channel) {
             logger.info('Dannys Birthday');
-            channel.send('Happy Birthday Fr0sty!!!');
+            channel.send('Happy Birthday Danny!!!');
             channel.send({
                 files: [
                     "./graves/gruntbday.gif"
@@ -143,6 +110,24 @@ client.on('ready', () => {
         timezone: 'America/Chicago' // Set the timezone to US Central Time (CT)
     });
 
+    // Happy Birthday Sean!
+    cron.schedule('0 7 14 10 *', () => {
+        const channel = client.channels.cache.get(channelID);
+        if (channel) {
+            logger.info('Seans Birthday');
+            channel.send('Happy Birthday Sean!!!');
+            channel.send({
+                files: [
+                    "./graves/gruntbday.gif"
+                ]
+            });
+        }
+        else {
+            logger.error('Error: Seans Birthday message did not work: ' + channel);
+        }
+    }, {
+        timezone: 'America/Chicago' // Set the timezone to US Central Time (CT)
+    });
 });
 
 client.login(config.BOT_TOKEN);
@@ -165,7 +150,7 @@ client.on('messageCreate', (msg) => {
     String(command);
 
     //Set up array for valid commands
-    const validCommands = ["dadjoke", "dadjokev", "tassi", "markmad", "perf", "pjk", "pulphalo", "socool", "teacher", "twistedtbag", "usererror", "ball", "jennaspying", "done", "jfc", "begun", "addtogap", "revenge", "luigi", "imback", "gamenight", "aliens", "helldivers", "hdsamples", "chronos", "gruntbday", "shrug", "spin", "coneofshame"];
+    const validCommands = ["dadjoke", "dadjokev", "tassi", "markmad", "perf", "pjk", "pulphalo", "socool", "teacher", "twistedtbag", "usererror", "ball", "jennaspying", "done", "jfc", "begun", "addtogap", "revenge", "luigi", "imback", "gamenight", "aliens", "helldivers", "hdsamples", "chronos", "gruntbday", "shrug", "spin", "coneofshame", "excuseyou", "imsorrywhat", "ohyea"];
     const seshCommands = ["create", "poll", "settings", "link", "list", "delete", "remind", "patreon", "vote"];
 
     // dadjoke message first to usurp all other commands
