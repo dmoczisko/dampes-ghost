@@ -33,11 +33,11 @@ client.on('ready', () => {
     }
 
     // Schedule a dad joke to be sent every day at 8 AM US Central Time
-    cron.schedule('0 8 * * *', () => {
+    cron.schedule('0 8 * * *', async () => {
         const channel = client.channels.cache.get(gChannelID);
         if (channel) {
             logger.info('Sending daily dad joke');
-            const joke = getRandomJoke();
+            const joke = await getRandomJoke();
             channel.send({
                 content: joke,
                 files: [
@@ -132,7 +132,7 @@ client.on('ready', () => {
 
 client.login(config.BOT_TOKEN);
 
-client.on('messageCreate', (msg) => {
+client.on('messageCreate', async (msg) => {
     //prefix variable is "!"
     const prefix = '!';
 
@@ -157,7 +157,7 @@ client.on('messageCreate', (msg) => {
     if (msg.content === `${prefix}dadjoke`) {
         msg.delete();
         logger.info("Dad Joke requested");
-        const joke = getRandomJoke();
+        const joke = await getRandomJoke();
         msg.channel.send({
             content: joke,
             files: [
