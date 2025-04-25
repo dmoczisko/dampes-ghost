@@ -52,6 +52,23 @@ client.on('ready', () => {
         timezone: 'America/Chicago' // Set the timezone to US Central Time (CT)
     });
 
+    // Schedule the videogame grid link to be sent every day at 8:30 AM US Central Time
+    // dude didn't fix his app so commenting out until i build my own and link it here
+    // cron.schedule('30 8 * * *', async () => {
+    //     const channel = client.channels.cache.get(channelID);
+    //     if (channel) {
+    //         logger.info('Sending daily videogame grid link');
+    //         channel.send({
+    //             content: 'Test your might! [videogame.io](https://videogamegrid.io)'
+    //         });
+    //     }
+    //     else {
+    //         logger.error('Error: daily videogame grid link message did not work: ' + channel);
+    //     }
+    // }, {
+    //     timezone: 'America/Chicago' // Set the timezone to US Central Time (CT)
+    // });
+
     // Happy Birthday Kyle!
     cron.schedule('0 7 16 2 *', () => {
         const channel = client.channels.cache.get(channelID);
