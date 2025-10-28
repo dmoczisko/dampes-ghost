@@ -1,12 +1,16 @@
-const axios = require('axios');
-
 async function getRandomJoke() {
     try {
-        const response = await axios.get('https://icanhazdadjoke.com/', {
+        const response = await fetch('https://icanhazdadjoke.com/', {
             headers: { 'Accept': 'application/json' }
         });
-        if (response.data && response.data.joke) {
-            return response.data.joke;
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        if (data && data.joke) {
+            return data.joke;
         } else {
             throw new Error('No joke found');
         }
