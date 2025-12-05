@@ -167,7 +167,7 @@ client.on('messageCreate', async (msg) => {
     String(command);
 
     //Set up array for valid commands
-    const validCommands = ["dadjoke", "dadjokev", "tassi", "markmad", "perf", "pjk", "pulphalo", "socool", "teacher", "twistedtbag", "usererror", "ball", "jennaspying", "done", "jfc", "begun", "addtogap", "revenge", "luigi", "imback", "gamenight", "aliens", "helldivers", "hdsamples", "chronos", "gruntbday", "shrug", "spin", "coneofshame", "excuseyou", "imsorrywhat", "ohyea"];
+    const validCommands = ["dadjoke", "dadjokev", "tassi", "markmad", "perf", "pjk", "pulphalo", "socool", "teacher", "twistedtbag", "usererror", "ball", "jennaspying", "done", "jfc", "begun", "addtogap", "revenge", "luigi", "imback", "gamenight", "aliens", "helldivers", "hdsamples", "chronos", "gruntbday", "shrug", "spin", "coneofshame", "excuseyou", "imsorrywhat", "ohyea", "penguin"];
     const seshCommands = ["create", "poll", "settings", "link", "list", "delete", "remind", "patreon", "vote"];
 
     // dadjoke message first to usurp all other commands
