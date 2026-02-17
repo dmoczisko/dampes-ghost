@@ -54,20 +54,20 @@ client.on('ready', () => {
 
     // Schedule the videogame grid link to be sent every day at 8:30 AM US Central Time
     // dude didn't fix his app so commenting out until i build my own and link it here
-    // cron.schedule('30 8 * * *', async () => {
-    //     const channel = client.channels.cache.get(channelID);
-    //     if (channel) {
-    //         logger.info('Sending daily videogame grid link');
-    //         channel.send({
-    //             content: 'Test your might! [videogame.io](https://videogamegrid.io)'
-    //         });
-    //     }
-    //     else {
-    //         logger.error('Error: daily videogame grid link message did not work: ' + channel);
-    //     }
-    // }, {
-    //     timezone: 'America/Chicago' // Set the timezone to US Central Time (CT)
-    // });
+    cron.schedule('30 8 * * *', async () => {
+        const channel = client.channels.cache.get(channelID);
+        if (channel) {
+            logger.info('Sending daily videogame grid link');
+            channel.send({
+                content: 'Test your might! [flawlessgrid.com](https://flawlessgrid.com/)'
+            });
+        }
+        else {
+            logger.error('Error: daily videogame grid link message did not work: ' + channel);
+        }
+    }, {
+        timezone: 'America/Chicago' // Set the timezone to US Central Time (CT)
+    });
 
     // Happy Birthday Kyle!
     cron.schedule('0 7 16 2 *', () => {
@@ -167,7 +167,7 @@ client.on('messageCreate', async (msg) => {
     String(command);
 
     //Set up array for valid commands
-    const validCommands = ["dadjoke", "dadjokev", "tassi", "markmad", "perf", "pjk", "pulphalo", "socool", "teacher", "twistedtbag", "usererror", "ball", "jennaspying", "done", "jfc", "begun", "addtogap", "revenge", "luigi", "imback", "gamenight", "aliens", "helldivers", "hdsamples", "chronos", "gruntbday", "shrug", "spin", "coneofshame", "excuseyou", "imsorrywhat", "ohyea", "penguin"];
+    const validCommands = ["brie", "gummi", "mohouse", "worthit", "workit", "dadjoke", "dadjokev", "tassi", "markmad", "perf", "pjk", "pulphalo", "socool", "teacher", "twistedtbag", "usererror", "ball", "jennaspying", "done", "jfc", "begun", "addtogap", "revenge", "luigi", "imback", "gamenight", "aliens", "helldivers", "hdsamples", "chronos", "gruntbday", "shrug", "spin", "coneofshame", "excuseyou", "imsorrywhat", "ohyea", "penguin"];
     const seshCommands = ["create", "poll", "settings", "link", "list", "delete", "remind", "patreon", "vote"];
 
     // dadjoke message first to usurp all other commands
